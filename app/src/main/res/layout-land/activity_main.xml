@@ -12,7 +12,7 @@
         android:id="@+id/operator_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.20"
+        android:layout_weight="0.175"
         android:gravity="end|center_vertical"
         android:paddingRight="15dp"
         android:text="@string/operation"
@@ -22,7 +22,7 @@
         android:id="@+id/results_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.20"
+        android:layout_weight="0.175"
         android:gravity="end|center_vertical"
         android:paddingRight="15dp"
         android:text="@string/result"
@@ -31,7 +31,7 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.60"
+        android:layout_weight="0.65"
         android:weightSum="1"
         android:stretchColumns="*"
         android:layout_gravity="center_horizontal">
@@ -49,7 +49,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/reset"
                 android:textColor="#FF9800"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF" />
 
             <Button
@@ -59,7 +59,7 @@
                 android:text="@string/delete"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#FF9800"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -70,7 +70,7 @@
                 android:text="@string/percentage"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#FF9800"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -81,7 +81,7 @@
                 android:text="@string/divide"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#FF9800"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
         </TableRow>
@@ -99,7 +99,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/seven"
                 android:textColor="#10100F"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF" />
 
             <Button
@@ -109,7 +109,7 @@
                 android:text="@string/eight"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#10100F"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -120,7 +120,7 @@
                 android:text="@string/nine"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#10100F"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -131,7 +131,7 @@
                 android:text="@string/product"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#FF9800"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -151,7 +151,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/four"
                 android:textColor="#10100F"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF" />
 
             <Button
@@ -161,7 +161,7 @@
                 android:text="@string/five"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#10100F"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -172,7 +172,7 @@
                 android:text="@string/six"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#10100F"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -183,7 +183,7 @@
                 android:text="@string/substract"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#FF9800"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -202,7 +202,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/one"
                 android:textColor="#10100F"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF" />
 
             <Button
@@ -212,7 +212,7 @@
                 android:text="@string/two"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#10100F"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -223,7 +223,7 @@
                 android:text="@string/three"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#10100F"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -234,7 +234,7 @@
                 android:text="@string/add"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#FF9800"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -253,7 +253,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/scientist"
                 android:textColor="#FF9800"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF" />
 
             <Button
@@ -263,7 +263,7 @@
                 android:text="@string/zero"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#10100F"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -274,7 +274,7 @@
                 android:text="@string/point"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#10100F"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
@@ -285,7 +285,7 @@
                 android:text="@string/equal"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#FF9800"
-                android:textSize="36sp"
+                android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
