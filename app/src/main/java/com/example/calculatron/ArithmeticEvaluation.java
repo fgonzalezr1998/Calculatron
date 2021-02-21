@@ -150,18 +150,4 @@ public class ArithmeticEvaluation {
             throw new IllegalArgumentException();
         return expression;
     }
-
-    public static void main(String[] args) {
-        String[] testExpressions = {
-                "2+3",
-                "2+3/4",
-                "2*3-4",
-                "2*(3+4)+5/6",
-                "2 * (3 + (4 * 5 + (6 * 7) * 8) - 9) * 10",
-                "2*-3--4+-.25"};
-        for (String testExpression : testExpressions) {
-            Expression expression = parse(testExpression);
-            System.out.printf("Input: \"%s\", AST: \"%s\", value=%s%n", testExpression, expression, expression.eval());
-        }
-    }
 }

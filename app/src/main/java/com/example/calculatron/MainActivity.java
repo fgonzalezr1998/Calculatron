@@ -1,7 +1,6 @@
 package com.example.calculatron;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,24 +8,25 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.calculatron.ArithmeticEvaluation;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "Calculatron";
 
-    public class ButtonHandler extends AppCompatActivity implements View.OnClickListener {
+    public class ButtonHandler implements View.OnClickListener {
 
         private TextView resultsText, operationText;
         private ArithmeticEvaluation arithmeticEval;
+        private Context context;
 
-        public ButtonHandler(TextView resultsText, TextView operationText) {
+        public ButtonHandler(TextView resultsText, TextView operationText, Context context) {
             Log.w(TAG, "Button Handler Generated!");
             this.resultsText = resultsText;
             this.operationText = operationText;
             this.arithmeticEval = new ArithmeticEvaluation();
+            this.context = context;
         }
 
         @Override
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 expr = Double.parseDouble((String) this.operationText.getText());
             } catch (NumberFormatException e) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Invalid Expression!", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(this.context, "Invalid Expression!", Toast.LENGTH_LONG);
                 toast.show();
                 return;
             }
@@ -100,8 +100,6 @@ public class MainActivity extends AppCompatActivity {
             ArithmeticEvaluation.Expression expr = this.arithmeticEval.parse(operation);
 
             this.resultsText.setText(String.valueOf(expr.eval().doubleValue()));
-
-            // Log.w(TAG, String.valueOf(expr.eval().doubleValue()));
         }
 
         private void writeOperation(String n_str) {
@@ -187,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         resultsText = (TextView) findViewById(R.id.results_text);
         operationText = (TextView) findViewById(R.id.operator_text);
 
-        buttonHandler = new ButtonHandler(resultsText, operationText);
+        buttonHandler = new ButtonHandler(resultsText, operationText, getApplicationContext());
         this.setButtonsListener(this.linearLayout);
     }
 
