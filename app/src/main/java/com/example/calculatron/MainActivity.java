@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.calculatron.ArithmeticEvaluation;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,11 +20,13 @@ public class MainActivity extends AppCompatActivity {
     public class ButtonHandler extends AppCompatActivity implements View.OnClickListener {
 
         private TextView resultsText, operationText;
+        private ArithmeticEvaluation arithmeticEval;
 
         public ButtonHandler(TextView resultsText, TextView operationText) {
             Log.w(TAG, "Button Handler Generated!");
             this.resultsText = resultsText;
             this.operationText = operationText;
+            this.arithmeticEval = new ArithmeticEvaluation();
         }
 
         @Override
@@ -37,8 +42,27 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.delete_btn:
                         this.deleteOperation();
                         break;
+                    case R.id.equal_btn:
+                        this.printResult();
+                        break;
+                    case R.id.percentage_btn:
+                        this.printPercentage();
+                        break;
                 }
             }
+        }
+
+        private boolean isWriteable(int id) {
+            return id == R.id.zero_btn || id == R.id.one_btn || id == R.id.two_btn ||
+                    id == R.id.three_btn || id == R.id.four_btn || id == R.id.five_btn ||
+                    id == R.id.six_btn || id == R.id.seven_btn || id == R.id.eight_btn ||
+                    id == R.id.nine_btn || id == R.id.point_btn || id == R.id.divide_btn ||
+                    id == R.id.product_btn || id == R.id.substract_btn || id == R.id.add_btn;
+        }
+
+        private boolean isOperator(int id) {
+            return id == R.id.divide_btn || id == R.id.product_btn || id == R.id.substract_btn ||
+                    id == R.id.add_btn || id == R.id.equal_btn;
         }
 
         private void reset() {
@@ -56,12 +80,28 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        private boolean isWriteable(int id) {
-            return id == R.id.zero_btn || id == R.id.one_btn || id == R.id.two_btn ||
-                    id == R.id.three_btn || id == R.id.four_btn || id == R.id.five_btn ||
-                    id == R.id.six_btn || id == R.id.seven_btn || id == R.id.eight_btn ||
-                    id == R.id.nine_btn || id == R.id.point_btn || id == R.id.divide_btn ||
-                    id == R.id.product_btn || id == R.id.substract_btn || id == R.id.add_btn;
+        private void printPercentage() {
+            double expr, res;
+
+            try {
+                expr = Double.parseDouble((String) this.operationText.getText());
+            } catch (NumberFormatException e) {
+                Toast toast = Toast.makeText(getApplicationContext(), "Invalid Expression!", Toast.LENGTH_LONG);
+                toast.show();
+                return;
+            }
+            res = expr / 100.0;
+            res = Math.round(res * 1000.0) / 1000.0;
+            this.resultsText.setText(String.valueOf(res));
+        }
+
+        private void printResult() {
+            String operation = (String) this.operationText.getText();
+            ArithmeticEvaluation.Expression expr = this.arithmeticEval.parse(operation);
+
+            this.resultsText.setText(String.valueOf(expr.eval().doubleValue()));
+
+            // Log.w(TAG, String.valueOf(expr.eval().doubleValue()));
         }
 
         private void writeOperation(String n_str) {
@@ -70,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
             if (operation.equals("0"))
                 operation = "";
 
+            if (n_str.equals(","))
+                n_str = ".";
             operation += n_str;
             this.operationText.setText(operation);
         }
@@ -163,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setButtonsListener(ViewGroup parent_layout) {
         View element;
-        Log.w(TAG, Integer.toString(parent_layout.getChildCount()));
+
         for (int i = 0; i < parent_layout.getChildCount(); i++) {
             element = parent_layout.getChildAt(i);
             if (element != null && element.isClickable()) {
