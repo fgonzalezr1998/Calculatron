@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         private Context context;
 
         public ButtonHandler(TextView resultsText, TextView operationText, Context context) {
-            Log.w(TAG, "Button Handler Generated!");
+            // Log.w(TAG, "Button Handler Generated!");
             this.resultsText = resultsText;
             this.operationText = operationText;
             this.arithmeticEval = new ArithmeticEvaluation();
@@ -48,6 +48,18 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.percentage_btn:
                         this.printPercentage();
                         break;
+                    case R.id.sqrt_btn:
+                        this.printSqrt();
+                        break;
+                    case R.id.sin_btn:
+                        this.printSin();
+                        break;
+                    case R.id.cos_btn:
+                        this.printCos();
+                        break;
+                    case R.id.pi_btn:
+                        this.printPi();
+                        break;
                 }
             }
         }
@@ -57,12 +69,15 @@ public class MainActivity extends AppCompatActivity {
                     id == R.id.three_btn || id == R.id.four_btn || id == R.id.five_btn ||
                     id == R.id.six_btn || id == R.id.seven_btn || id == R.id.eight_btn ||
                     id == R.id.nine_btn || id == R.id.point_btn || id == R.id.divide_btn ||
-                    id == R.id.product_btn || id == R.id.substract_btn || id == R.id.add_btn;
+                    id == R.id.product_btn || id == R.id.substract_btn || id == R.id.add_btn ||
+                    id == R.id.par_open_btn || id == R.id.par_closed_btn;
         }
 
-        private boolean isOperator(int id) {
-            return id == R.id.divide_btn || id == R.id.product_btn || id == R.id.substract_btn ||
-                    id == R.id.add_btn || id == R.id.equal_btn;
+        private boolean operationOk(String op) {
+            String lastCh = op.substring(op.length() - 1, op.length());
+
+            return !lastCh.equals("+") && !lastCh.equals("-") && !lastCh.equals("x") &&
+                    !lastCh.equals("÷");
         }
 
         private void reset() {
@@ -78,6 +93,82 @@ public class MainActivity extends AppCompatActivity {
                     operation = "0";
                 this.operationText.setText(operation);
             }
+        }
+
+        private void printPi() {
+            String operation = (String) this.operationText.getText();
+
+            if (operation.equals("0"))
+                operation = "";
+
+            operation += "3.1416";
+            this.operationText.setText(operation);
+        }
+
+        private void printSqrt() {
+            double res;
+
+            String operation = (String) this.operationText.getText();
+            if (! this.operationOk(operation)) {
+                return;
+            }
+
+            ArithmeticEvaluation.Expression expr = this.arithmeticEval.parse(operation);
+
+            try {
+                res = expr.eval().doubleValue();
+            } catch (IllegalStateException e) {
+                this.resultsText.setText("inf");
+                Toast toast = Toast.makeText(this.context, "Division by Zero!", Toast.LENGTH_SHORT);
+                toast.show();
+                return;
+            }
+            res = Math.sqrt(res);
+            this.resultsText.setText(String.valueOf(res));
+        }
+
+        private void printSin() {
+            double res;
+
+            String operation = (String) this.operationText.getText();
+            if (! this.operationOk(operation)) {
+                return;
+            }
+
+            ArithmeticEvaluation.Expression expr = this.arithmeticEval.parse(operation);
+
+            try {
+                res = expr.eval().doubleValue();
+            } catch (IllegalStateException e) {
+                this.resultsText.setText("inf");
+                Toast toast = Toast.makeText(this.context, "Division by Zero!", Toast.LENGTH_SHORT);
+                toast.show();
+                return;
+            }
+            res = Math.sin(res);
+            this.resultsText.setText(String.valueOf(res));
+        }
+
+        private void printCos() {
+            double res;
+
+            String operation = (String) this.operationText.getText();
+            if (! this.operationOk(operation)) {
+                return;
+            }
+
+            ArithmeticEvaluation.Expression expr = this.arithmeticEval.parse(operation);
+
+            try {
+                res = expr.eval().doubleValue();
+            } catch (IllegalStateException e) {
+                this.resultsText.setText("inf");
+                Toast toast = Toast.makeText(this.context, "Division by Zero!", Toast.LENGTH_SHORT);
+                toast.show();
+                return;
+            }
+            res = Math.cos(res);
+            this.resultsText.setText(String.valueOf(res));
         }
 
         private void printPercentage() {
@@ -97,9 +188,18 @@ public class MainActivity extends AppCompatActivity {
 
         private void printResult() {
             String operation = (String) this.operationText.getText();
+            if (! this.operationOk(operation)) {
+                return;
+            }
             ArithmeticEvaluation.Expression expr = this.arithmeticEval.parse(operation);
 
-            this.resultsText.setText(String.valueOf(expr.eval().doubleValue()));
+            try {
+                this.resultsText.setText(String.valueOf(expr.eval().doubleValue()));
+            } catch (IllegalStateException e) {
+                this.resultsText.setText("inf");
+                Toast toast = Toast.makeText(this.context, "Division by Zero!", Toast.LENGTH_SHORT);
+                toast.show();
+            }
         }
 
         private void writeOperation(String n_str) {
@@ -161,6 +261,12 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.add_btn:
                     s = "+";
+                    break;
+                case R.id.par_open_btn:
+                    s = "(";
+                    break;
+                case R.id.par_closed_btn:
+                    s = ")";
                     break;
                 default:
                     s = "";

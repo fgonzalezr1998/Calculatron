@@ -33,7 +33,10 @@ public class ArithmeticEvaluation {
                 case MUL:
                     return leftValue.multiply(rightValue);
                 case DIV:
-                    return leftValue.divide(rightValue);
+                    if (rightValue.doubleValue() != 0.0)
+                        return leftValue.divide(rightValue);
+                    else
+                        throw new IllegalStateException();
             }
             throw new IllegalStateException();
         }

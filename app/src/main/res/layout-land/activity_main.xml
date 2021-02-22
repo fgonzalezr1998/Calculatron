@@ -12,26 +12,26 @@
         android:id="@+id/operator_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.175"
+        android:layout_weight="0.14"
         android:gravity="end|center_vertical"
         android:paddingRight="15dp"
         android:text="@string/operation"
-        android:textSize="36sp" />
+        android:textSize="28sp" />
 
     <TextView
         android:id="@+id/results_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.175"
+        android:layout_weight="0.14"
         android:gravity="end|center_vertical"
         android:paddingRight="15dp"
         android:text="@string/result"
-        android:textSize="36sp" />
+        android:textSize="28sp" />
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.65"
+        android:layout_weight="0.60"
         android:weightSum="1"
         android:stretchColumns="*"
         android:layout_gravity="center_horizontal">
@@ -40,6 +40,17 @@
             android:layout_weight="0.20"
             android:weightSum="1"
             android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/pi_btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/pi"
+                android:textColor="#FF9800"
+                android:textSize="22sp"
+                app:backgroundTint="#FFFFFF" />
 
             <Button
                 android:id="@+id/reset_btn"
@@ -84,12 +95,34 @@
                 android:textSize="22sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
+
+            <Button
+                android:id="@+id/sqrt_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/sqrt"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#FF9800"
+                android:textSize="22sp"
+                app:backgroundTint="#FFFFFF"
+                style="@style/Widget.AppCompat.Button.Borderless"/>
         </TableRow>
 
         <TableRow
             android:layout_weight="0.20"
             android:weightSum="1"
             android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/fact_btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/fact"
+                android:textColor="#FF9800"
+                android:textSize="22sp"
+                app:backgroundTint="#FFFFFF" />
 
             <Button
                 android:id="@+id/seven_btn"
@@ -135,6 +168,17 @@
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
+            <Button
+                android:id="@+id/sin_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/sin"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#FF9800"
+                android:textSize="22sp"
+                app:backgroundTint="#FFFFFF"
+                style="@style/Widget.AppCompat.Button.Borderless"/>
+
         </TableRow>
 
 
@@ -142,6 +186,17 @@
             android:layout_weight="0.20"
             android:weightSum="1"
             android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/log_btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/log"
+                android:textColor="#FF9800"
+                android:textSize="22sp"
+                app:backgroundTint="#FFFFFF" />
 
             <Button
                 android:id="@+id/four_btn"
@@ -187,12 +242,34 @@
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
+            <Button
+                android:id="@+id/cos_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/cos"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#FF9800"
+                android:textSize="22sp"
+                app:backgroundTint="#FFFFFF"
+                style="@style/Widget.AppCompat.Button.Borderless"/>
+
         </TableRow>
 
         <TableRow
             android:layout_weight="0.20"
             android:weightSum="1"
             android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/ln_btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/ln"
+                android:textColor="#FF9800"
+                android:textSize="22sp"
+                app:backgroundTint="#FFFFFF" />
 
             <Button
                 android:id="@+id/one_btn"
@@ -238,21 +315,51 @@
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
+            <Button
+                android:id="@+id/tan_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/tan"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#FF9800"
+                android:textSize="22sp"
+                app:backgroundTint="#FFFFFF"
+                style="@style/Widget.AppCompat.Button.Borderless"/>
+
         </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.17"
+        android:weightSum="1"
+        android:stretchColumns="*"
+        android:layout_gravity="center_horizontal">
 
         <TableRow
-            android:layout_weight="0.20"
+            android:layout_weight="1"
             android:weightSum="1"
             android:layout_gravity="center">
 
             <Button
-                android:id="@+id/scient_btn"
+                android:id="@+id/par_open_btn"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/scientist"
-                android:textColor="#FF9800"
+                android:text="@string/par_open"
+                android:textColor="#10100F"
+                android:textSize="22sp"
+                app:backgroundTint="#FFFFFF" />
+            <Button
+                android:id="@+id/par_closed_btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/par_closed"
+                android:textColor="#10100F"
                 android:textSize="22sp"
                 app:backgroundTint="#FFFFFF" />
 

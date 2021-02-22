@@ -12,7 +12,7 @@
         android:id="@+id/operator_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.20"
+        android:layout_weight="0.15"
         android:gravity="end|center_vertical"
         android:paddingRight="15dp"
         android:text="@string/operation"
@@ -22,7 +22,7 @@
         android:id="@+id/results_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.20"
+        android:layout_weight="0.15"
         android:gravity="end|center_vertical"
         android:paddingRight="15dp"
         android:text="@string/result"
@@ -31,7 +31,7 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.60"
+        android:layout_weight="0.40"
         android:weightSum="1"
         android:stretchColumns="*"
         android:layout_gravity="center_horizontal">
@@ -239,7 +239,7 @@
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
         </TableRow>
-
+        <!--
         <TableRow
             android:layout_weight="0.20"
             android:weightSum="1"
@@ -286,6 +286,79 @@
                 android:layout_gravity="center_horizontal"
                 android:textColor="#FF9800"
                 android:textSize="36sp"
+                app:backgroundTint="#FFFFFF"
+                style="@style/Widget.AppCompat.Button.Borderless"/>
+
+        </TableRow>
+        -->
+
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:weightSum="1"
+        android:stretchColumns="*"
+        android:layout_gravity="center_horizontal">
+
+        <TableRow
+            android:layout_weight="1"
+            android:weightSum="1"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/par_open_btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="69dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/par_open"
+                android:textColor="#10100F"
+                android:textSize="28sp"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/par_closed_btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/par_closed"
+                android:textColor="#10100F"
+                android:textSize="28sp"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/zero_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/zero"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#10100F"
+                android:textSize="28sp"
+                app:backgroundTint="#FFFFFF"
+                style="@style/Widget.AppCompat.Button.Borderless"/>
+
+            <Button
+                android:id="@+id/point_btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="72dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/point"
+                android:textColor="#10100F"
+                android:textSize="28sp"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:id="@+id/equal_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/equal"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#FF9800"
+                android:textSize="28sp"
                 app:backgroundTint="#FFFFFF"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
 
