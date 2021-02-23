@@ -57,6 +57,18 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.cos_btn:
                         this.printCos();
                         break;
+                    case R.id.tan_btn:
+                        this.printTan();
+                        break;
+                    case R.id.log_btn:
+                        this.printLog();
+                        break;
+                    case R.id.ln_btn:
+                        this.printLn();
+                        break;
+                    case R.id.fact_btn:
+                        this.printFact();
+                        break;
                     case R.id.pi_btn:
                         this.printPi();
                         break;
@@ -74,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private boolean operationOk(String op) {
-            String lastCh = op.substring(op.length() - 1, op.length());
+            String lastCh = op.substring(op.length() - 1);
 
             return !lastCh.equals("+") && !lastCh.equals("-") && !lastCh.equals("x") &&
                     !lastCh.equals("÷");
@@ -96,20 +108,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private void printPi() {
-            String operation = (String) this.operationText.getText();
+            String operation;
+            boolean ok = true;
 
-            if (operation.equals("0"))
+            operation = (String) this.operationText.getText();
+
+            if (operation.equals("0")) {
                 operation = "";
-
-            operation += "3.1416";
-            this.operationText.setText(operation);
+            } else {
+                ok = !this.operationOk(operation);
+            }
+            if (ok) {
+                operation += "3.1416";
+                this.operationText.setText(operation);
+            }
         }
 
         private void printSqrt() {
             double res;
 
             String operation = (String) this.operationText.getText();
-            if (! this.operationOk(operation)) {
+            if (!this.operationOk(operation)) {
                 return;
             }
 
@@ -169,6 +188,102 @@ public class MainActivity extends AppCompatActivity {
             }
             res = Math.cos(res);
             this.resultsText.setText(String.valueOf(res));
+        }
+
+        private void printTan() {
+            double res;
+
+            String operation = (String) this.operationText.getText();
+            if (!this.operationOk(operation)) {
+                return;
+            }
+
+            ArithmeticEvaluation.Expression expr = this.arithmeticEval.parse(operation);
+
+            try {
+                res = expr.eval().doubleValue();
+            } catch (IllegalStateException e) {
+                this.resultsText.setText("inf");
+                Toast toast = Toast.makeText(this.context, "Division by Zero!", Toast.LENGTH_SHORT);
+                toast.show();
+                return;
+            }
+            res = Math.tan(res);
+            this.resultsText.setText(String.valueOf(res));
+        }
+
+        private void printLog() {
+            double res;
+
+            String operation = (String) this.operationText.getText();
+            if (!this.operationOk(operation)) {
+                return;
+            }
+
+            ArithmeticEvaluation.Expression expr = this.arithmeticEval.parse(operation);
+
+            try {
+                res = expr.eval().doubleValue();
+            } catch (IllegalStateException e) {
+                this.resultsText.setText("inf");
+                Toast toast = Toast.makeText(this.context, "Division by Zero!", Toast.LENGTH_SHORT);
+                toast.show();
+                return;
+            }
+            res = Math.log10(res);
+            this.resultsText.setText(String.valueOf(res));
+        }
+
+        private void printLn() {
+            double res;
+
+            String operation = (String) this.operationText.getText();
+            if (!this.operationOk(operation)) {
+                return;
+            }
+
+            ArithmeticEvaluation.Expression expr = this.arithmeticEval.parse(operation);
+
+            try {
+                res = expr.eval().doubleValue();
+            } catch (IllegalStateException e) {
+                this.resultsText.setText("inf");
+                Toast toast = Toast.makeText(this.context, "Division by Zero!", Toast.LENGTH_SHORT);
+                toast.show();
+                return;
+            }
+            res = Math.log(res);
+            this.resultsText.setText(String.valueOf(res));
+        }
+
+        private void printFact() {
+            double res;
+            int roundedRes;
+            int fact;
+
+            String operation = (String) this.operationText.getText();
+            if (!this.operationOk(operation)) {
+                return;
+            }
+
+            ArithmeticEvaluation.Expression expr = this.arithmeticEval.parse(operation);
+
+            try {
+                res = expr.eval().doubleValue();
+            } catch (IllegalStateException e) {
+                this.resultsText.setText("inf");
+                Toast toast = Toast.makeText(this.context, "Division by Zero!", Toast.LENGTH_SHORT);
+                toast.show();
+                return;
+            }
+
+            roundedRes = (int) res;
+            fact = 1;
+            while (roundedRes != 0) {
+                fact = fact * roundedRes;
+                roundedRes--;
+            }
+            this.resultsText.setText(String.valueOf(fact));
         }
 
         private void printPercentage() {
@@ -275,8 +390,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    LinearLayout linearLayout;
-    ButtonHandler buttonHandler;
+    private LinearLayout linearLayout;
+    private ButtonHandler buttonHandler;
     private TextView resultsText, operationText;
 
     @Override
