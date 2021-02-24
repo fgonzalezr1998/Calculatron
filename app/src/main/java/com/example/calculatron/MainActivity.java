@@ -76,6 +76,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        private int charAppearance(String str, char c) {
+            int count = 0;
+            for (int i = 0; i < str.length(); i++) {
+                if (str.charAt(i) == c)
+                    count++;
+            }
+            return count;
+        }
+
         private boolean isWriteable(int id) {
             return id == R.id.zero_btn || id == R.id.one_btn || id == R.id.two_btn ||
                     id == R.id.three_btn || id == R.id.four_btn || id == R.id.five_btn ||
@@ -85,11 +94,37 @@ public class MainActivity extends AppCompatActivity {
                     id == R.id.par_open_btn || id == R.id.par_closed_btn;
         }
 
-        private boolean operationOk(String op) {
+        private boolean lastCharIsOk(String op) {
             String lastCh = op.substring(op.length() - 1);
 
             return !lastCh.equals("+") && !lastCh.equals("-") && !lastCh.equals("x") &&
                     !lastCh.equals("÷");
+        }
+
+        private boolean parenthesisOk(String op) {
+            boolean ok;
+            int i, j;
+            ok = this.charAppearance(op, '(') == this.charAppearance(op, ')');
+            if (!ok)
+                return false;
+
+            i = 0;
+            while (i < op.length() - 1 && ok) {
+                if (op.charAt(i) == '(') {
+                    ok = op.charAt(i + 1) != ')';
+                } else if (op.charAt(i) == ')' && i > 0) {
+                    j = i - 1;
+                    ok = op.charAt(j) != '+' && op.charAt(j) != '-' &&
+                            op.charAt(j) != 'x' && op.charAt(j) != '÷';
+                }
+                i++;
+            }
+
+            return ok;
+        }
+
+        private boolean operationOk(String op) {
+            return this.lastCharIsOk(op) && this.parenthesisOk(op);
         }
 
         private void reset() {
