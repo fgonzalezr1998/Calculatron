@@ -123,8 +123,17 @@ public class MainActivity extends AppCompatActivity {
             return ok;
         }
 
+        private boolean operatorsOk(String op) {
+            for (int i = op.length() - 1; i >= 0; i--) {
+                if (op.charAt(i) == ')')
+                    continue;
+                return this.lastCharIsOk(op.substring(0, i + 1));
+            }
+            return false;
+        }
+
         private boolean operationOk(String op) {
-            return this.lastCharIsOk(op) && this.parenthesisOk(op);
+            return this.lastCharIsOk(op) && this.parenthesisOk(op) && this.operatorsOk(op);
         }
 
         private void reset() {

@@ -338,7 +338,7 @@ public class BigRational extends Number implements Comparable<BigRational>
     {  return valueOf(numerator).divide(valueOf(denominator));  }
 
     /* ******************** Testing ******************** */
-
+    /*
     public static boolean testEquals(String testName, Object obj, String str)
     {  return testEquals(testName, obj, null, str);  }
 
@@ -477,5 +477,5 @@ public class BigRational extends Number implements Comparable<BigRational>
         testFeatures();
         return;
     }
-
+    */
 }
